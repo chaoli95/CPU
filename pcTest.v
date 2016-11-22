@@ -4,15 +4,15 @@
 // Company: 
 // Engineer:
 //
-// Create Date:   13:43:14 11/01/2016
-// Design Name:   Register
-// Module Name:   C:/projects/CPU/RegTest.v
+// Create Date:   08:31:55 11/22/2016
+// Design Name:   PC
+// Module Name:   C:/projects/CPU/pcTest.v
 // Project Name:  CPU
 // Target Device:  
 // Tool versions:  
 // Description: 
 //
-// Verilog Test Fixture created by ISE for module: Register
+// Verilog Test Fixture created by ISE for module: PC
 //
 // Dependencies:
 // 
@@ -22,60 +22,47 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module RegTest;
+module pcTest;
 
 	// Inputs
 	reg clk;
 	reg reset;
-	reg write;
-	reg [4:0] dAddr;
-	reg [31:0] data;
-	reg [4:0] sAddr;
-	reg [4:0] tAddr;
+	reg we;
+	reg [8:0] newAddr;
 
 	// Outputs
-	wire [31:0] sData;
-	wire [31:0] tData;
+	wire [8:0] address;
 
 	// Instantiate the Unit Under Test (UUT)
-	Register uut (
+	PC uut (
 		.clk(clk), 
 		.reset(reset), 
-		.write(write), 
-		.dAddr(dAddr), 
-		.data(data), 
-		.sAddr(sAddr), 
-		.tAddr(tAddr), 
-		.sData(sData), 
-		.tData(tData)
+		.we(we), 
+		.newAddr(newAddr), 
+		.address(address)
 	);
-
+	
+	always begin
+		#5 clk = clk+1;
+	end
+	
 	initial begin
 		// Initialize Inputs
 		clk = 0;
 		reset = 0;
-		write = 1;
-		dAddr = 5'b1;
-		data = 32'hffffffff;
-		sAddr = 5'b0;
-		tAddr = 5'b11111;
+		we = 0;
+		newAddr = 0;
 		
-		
-		
-		#13 reset = 1;
-		#8 write = 0;
+		#20 reset = 1;
+		#7 we = 1;
+		newAddr = 9'b101010101;
+		#10 we = 0;
 		// Wait 100 ns for global reset to finish
 		#100;
+        
 		// Add stimulus here
-	end
 
-	always begin
-		#5 clk = clk+1;
-		tAddr = tAddr-1;
-		sAddr = sAddr+1;
 	end
-	
-	
-	
+      
 endmodule
 

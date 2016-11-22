@@ -39,7 +39,7 @@ module Register(clk, reset, write, dAddr, data, sAddr, tAddr, sData, tData);
 		if (!reset) begin
 			for(i = 0; i <32; i=i+1)
 			begin
-				regs[i] <= 32'h0;
+				regs[i] <= i;
 			end
 			i=0;
 		end 

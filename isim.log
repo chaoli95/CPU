@@ -1,5 +1,5 @@
 ISim log file
-Running: C:\projects\CPU\controlTest_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/projects/CPU/controlTest_isim_beh.wdb 
+Running: C:\projects\CPU\RegTest_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/projects/CPU/RegTest_isim_beh.wdb 
 ISim P.20131013 (signature 0x7708f090)
 This is a Full version of ISim.
 Time resolution is 1 ps
@@ -7,8 +7,4 @@ Time resolution is 1 ps
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
-WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
-WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
 Finished circuit initialization process.
-# run all
-Stopped at time : 16030930 ns : File "C:/projects/CPU/controlTest.v" Line 38

@@ -4,15 +4,15 @@
 // Company: 
 // Engineer:
 //
-// Create Date:   12:55:29 11/01/2016
-// Design Name:   ImmExtender
-// Module Name:   C:/projects/CPU/ImmExtenderTest.v
+// Create Date:   08:24:29 11/22/2016
+// Design Name:   DataSelector
+// Module Name:   C:/projects/CPU/muxTest.v
 // Project Name:  CPU
 // Target Device:  
 // Tool versions:  
 // Description: 
 //
-// Verilog Test Fixture created by ISE for module: ImmExtender
+// Verilog Test Fixture created by ISE for module: DataSelector
 //
 // Dependencies:
 // 
@@ -22,33 +22,35 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module ImmExtenderTest;
+module muxTest;
 
 	// Inputs
-	reg [15:0] Imm;
-	reg Ctr;
+	reg [31:0] S;
+	reg [31:0] T;
+	reg Ctrl;
 
 	// Outputs
 	wire [31:0] Res;
 
 	// Instantiate the Unit Under Test (UUT)
-	ImmExtender uut (
-		.Imm(Imm), 
-		.Ctr(Ctr), 
+	DataSelector uut (
+		.S(S), 
+		.T(T), 
+		.Ctrl(Ctrl), 
 		.Res(Res)
 	);
 	
 	always begin
 		#5
-		Ctr = Ctr + 1;
-	end	
+		Ctrl = Ctrl + 1'b1;
+	end
 
 	initial begin
 		// Initialize Inputs
-		Imm = 16'hffff;
-		Ctr = 0;
-		#23 Imm = 16'h7fff;
-		#5 Imm = 16'hf001;
+		S = 32'hffff;
+		T = 32'h5555;
+		Ctrl = 0;
+
 		// Wait 100 ns for global reset to finish
 		#100;
         
